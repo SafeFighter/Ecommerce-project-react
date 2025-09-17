@@ -1,13 +1,15 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchData } from "../functions/fetch";
+import ProductCard from "../components/ProductCard";
+import Footer from "../components/Footer";
 
 function Landing() {
   const { isPending, isError, data, error } = useQuery({
-    queryKey: ["product"],
+    queryKey: ["products"],
     queryFn: fetchData,
   });
   if (isPending) {
-    return <p>Data Pending</p>;
+    return <p>Loading product ... </p>;
   }
   if (isError) {
     return <p>{error.message}</p>;
@@ -15,6 +17,7 @@ function Landing() {
   console.log(data);
   return (
     <>
+      {/* react router /all /clothes / jewerly ... */}
       {/* ovdje header*/}
 
       <div className="hero-image">
@@ -23,8 +26,11 @@ function Landing() {
         <h4>Founded in 2025.</h4>
         <button>Shop Now</button>
       </div>
-      {/* product card*/}
-      {/* ovdje footer*/}
+      {data.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+
+      <Footer />
     </>
   );
 }
