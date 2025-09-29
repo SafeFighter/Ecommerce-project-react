@@ -1,13 +1,17 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchData } from "../functions/fetch";
 import Header from "../components/Header";
+import ProductCard from "../components/ProductCard";
+import { useState } from "react";
 
 function ProductSearch() {
-  const { isPending, isError, data, error } = useQuery({
+  const [category, setCategory] = useState("All");
+
+  const { isLoading, isError, data, error } = useQuery({
     queryKey: ["products"],
     queryFn: fetchData,
   });
-  if (isPending) {
+  if (isLoading) {
     return <p>Loading product ... </p>;
   }
   if (isError) {
@@ -15,6 +19,7 @@ function ProductSearch() {
   }
 
   const uniqueCategories = [
+    "All",
     ...new Set(data.map((product) => product.category)), //filtrira, dopušta samo jedinstvene vrijednosti
   ];
 
@@ -22,14 +27,33 @@ function ProductSearch() {
     <>
       <Header />
       <h1>Product search</h1>
-      <nav>
-        <ul>
-          {uniqueCategories.map((category, index) => (
-            <li key={index}>{category}</li>
-          ))}
-        </ul>
-      </nav>
+      <div>
+        {uniqueCategories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => {
+              setCategory(cat);
+            }}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <hr />
+      <div>
+        {category === "All"
+          ? data.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          : data
+              .filter((product) => product.category === category)
+              .map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+      </div>
     </>
   );
 }
+
 export default ProductSearch;
