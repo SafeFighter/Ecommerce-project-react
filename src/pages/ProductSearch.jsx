@@ -13,14 +13,20 @@ function ProductSearch() {
   if (isError) {
     return <p>{error.message}</p>;
   }
-  console.log(`product search ${data[0].category}`);
+
+  const uniqueCategories = [
+    ...new Set(data.map((product) => product.category)), //filtrira, dopušta samo jedinstvene vrijednosti
+  ];
+
   return (
     <>
       <Header />
       <h1>Product search</h1>
       <nav>
         <ul>
-          <li>{data.map((product) => product.category)}</li>
+          {uniqueCategories.map((category, index) => (
+            <li key={index}>{category}</li>
+          ))}
         </ul>
       </nav>
     </>
