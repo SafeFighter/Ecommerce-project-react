@@ -5,18 +5,21 @@ import Landing from "./pages/landing";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ProductSearch from "./pages/ProductSearch";
 import Product from "./pages/Product";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Landing />} /> {/* default */}
-          <Route path="/5tor3/home" element={<Landing />} />
-          <Route path="/5tor3/categories" element={<ProductSearch />} />
-          <Route path="/5tor3/product/:id" element={<Product />} />
-        </Routes>
-      </Router>
+      <CartProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Landing />} /> {/* default */}
+            <Route path="/5tor3/home" element={<Landing />} />
+            <Route path="/5tor3/categories" element={<ProductSearch />} />
+            <Route path="/5tor3/product/:id" element={<Product />} />
+          </Routes>
+        </Router>
+      </CartProvider>
     </>
   );
 }
