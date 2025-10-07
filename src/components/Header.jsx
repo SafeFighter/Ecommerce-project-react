@@ -11,6 +11,11 @@ function Header() {
           <li>
             <Link to="/5tor3/categories">Categories</Link>
           </li>
+          <li>
+            <Link to="/5tor3/cart">
+              <i className="bi bi-cart"></i>
+            </Link>
+          </li>
         </ul>
       </nav>
     </>

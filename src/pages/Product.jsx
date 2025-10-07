@@ -3,8 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchData } from "../functions/fetch";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useContext } from "react";
+import CartContext from "../context/CartContext";
 
 function Product(productId) {
+  const { addToCart } = useContext(CartContext);
   const { id } = useParams();
 
   const { isLoading, isError, data, error } = useQuery({
@@ -27,7 +30,7 @@ function Product(productId) {
       <img src={product.image} alt={product.title} />
       <p>Price: {product.price}$</p>
       <p>{product.description}</p>
-      <button>Add to Cart</button>
+      <button onClick={() => addToCart(product)}>Add to Cart</button>
       <Footer />
     </>
   );
