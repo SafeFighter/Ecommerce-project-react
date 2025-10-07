@@ -13,7 +13,15 @@ export function CartProvider({ children }) {
   }, [cart]);
 
   function addToCart(product) {
-    setCart((prevCart) => [...prevCart, product]);
+    setCart((prevCart) => {
+      const exists = prevCart.find((item) => (item.id = product.id));
+      if (exists) {
+        alert("Item already in cart");
+        return prevCart;
+      }
+      alert("Item added to cart");
+      return [...prevCart, product];
+    });
   }
 
   function removeFromCart(id) {
