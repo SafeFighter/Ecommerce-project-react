@@ -46,15 +46,21 @@ function ProductSearch() {
         <div className="row">
           {category === "All"
             ? data.map((product) => (
-                <div className="col-12 col-md-6 col-lg-3 mb-4">
-                  <ProductCard key={product.id} product={product} />
+                <div
+                  key={product.id}
+                  className="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch"
+                >
+                  <ProductCard product={product} />
                 </div>
               ))
             : data
                 .filter((product) => product.category === category)
                 .map((product) => (
-                  <div className="col-12 col-md-6 col-lg-3 mb-4">
-                    <ProductCard key={product.id} product={product} />
+                  <div
+                    key={product.id}
+                    className="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch"
+                  >
+                    <ProductCard product={product} />
                   </div>
                 ))}
         </div>

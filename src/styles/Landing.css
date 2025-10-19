@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(44, 44, 41);
+  background-color: rgb(58, 58, 52);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,8 +11,9 @@ footer {
   padding: 1rem;
   text-align: center;
   margin-bottom: 0;
-  margin-top: 1vh;
+  margin-top: 40vh;
 }
-.hero-image {
-  margin-top: 30vh;
+
+h1 {
+  color: red !important;
 }

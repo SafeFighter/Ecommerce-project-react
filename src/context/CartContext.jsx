@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
 
   function addToCart(product) {
     setCart((prevCart) => {
-      const exists = prevCart.find((item) => (item.id = product.id));
+      const exists = prevCart.find((item) => item.id === product.id);
       if (exists) {
         alert("Item already in cart");
         return prevCart;
@@ -27,17 +27,17 @@ export function CartProvider({ children }) {
   function removeFromCart(id) {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   }
+
   function clearCart() {
     setCart([]);
   }
+
   return (
-    <>
-      <CartContext.Provider
-        value={{ cart, addToCart, removeFromCart, clearCart }}
-      >
-        {children}
-      </CartContext.Provider>
-    </>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, clearCart }}
+    >
+      {children}
+    </CartContext.Provider>
   );
 }
 

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import CartContext from "../context/CartContext";
 import "../styles/productCard.css";
+
 function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
 
@@ -13,7 +14,7 @@ function ProductCard({ product }) {
             {product.title}
           </Link>
         </h4>
-        <Link to={`/5tor3/product/${product.id}`}>
+        <Link className="img-wrapper" to={`/5tor3/product/${product.id}`}>
           <img src={product.image} alt={product.title} />
         </Link>
 
