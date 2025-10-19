@@ -3,6 +3,7 @@ import CartContext from "../context/CartContext";
 import { useContext } from "react";
 import CartItem from "../components/CartItem";
 import "../styles/cart.css";
+import { Link } from "react-router-dom";
 function Cart() {
   const { cart, removeFromCart, clearCart } = useContext(CartContext);
   return (
@@ -35,7 +36,9 @@ function Cart() {
               <button className="btn btn-warning" onClick={clearCart}>
                 Clear Cart
               </button>
-              <button className="btn btn-success">Checkout</button>
+              <Link to="/5tor3/checkout">
+                <button className="btn btn-success">Checkout</button>
+              </Link>
             </div>
           </>
         )}

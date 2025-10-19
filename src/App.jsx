@@ -7,6 +7,7 @@ import ProductSearch from "./pages/ProductSearch";
 import Product from "./pages/Product";
 import { CartProvider } from "./context/CartContext";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/5tor3/categories" element={<ProductSearch />} />
             <Route path="/5tor3/product/:id" element={<Product />} />
             <Route path="/5tor3/cart" element={<Cart />} />
+            <Route path="/5tor3/checkout" element={<Checkout />} />
           </Routes>
         </Router>
       </CartProvider>
