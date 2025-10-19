@@ -140,7 +140,9 @@ function Checkout() {
           </form>
         </div>
         <div>
-          <p className="text-light">Total price: {sum}$</p>
+          <p className="text-light">
+            {sum != 0 ? `Total price: ${sum}$` : "Cart is empty"}
+          </p>
         </div>
       </div>
     </>
