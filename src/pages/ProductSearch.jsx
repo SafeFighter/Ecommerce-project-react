@@ -26,10 +26,11 @@ function ProductSearch() {
   return (
     <>
       <Header />
-      <h1>Product search</h1>
-      <div>
+      <h1 className="h1 mb-3 mt-3 text-light">Product search</h1>
+      <div className="btn-group">
         {uniqueCategories.map((cat) => (
           <button
+            className="btn btn-secondary"
             key={cat}
             onClick={() => {
               setCategory(cat);
@@ -41,16 +42,22 @@ function ProductSearch() {
       </div>
 
       <hr />
-      <div>
-        {category === "All"
-          ? data.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))
-          : data
-              .filter((product) => product.category === category)
-              .map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
+      <div className="container">
+        <div className="row">
+          {category === "All"
+            ? data.map((product) => (
+                <div className="col-12 col-md-6 col-lg-3 mb-4">
+                  <ProductCard key={product.id} product={product} />
+                </div>
+              ))
+            : data
+                .filter((product) => product.category === category)
+                .map((product) => (
+                  <div className="col-12 col-md-6 col-lg-3 mb-4">
+                    <ProductCard key={product.id} product={product} />
+                  </div>
+                ))}
+        </div>
       </div>
     </>
   );

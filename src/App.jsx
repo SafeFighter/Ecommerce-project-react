@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import "./App.css";
-import Landing from "./pages/landing";
+import Landing from "./pages/Landing";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ProductSearch from "./pages/ProductSearch";
 import Product from "./pages/Product";

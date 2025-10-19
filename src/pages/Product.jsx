@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useContext } from "react";
 import CartContext from "../context/CartContext";
+import "../styles/Product.css";
 
 function Product(productId) {
   const { addToCart } = useContext(CartContext);
@@ -26,12 +27,19 @@ function Product(productId) {
   return (
     <>
       <Header />
-      <h1>{product.title}</h1>
+      <h1 className="text-light mt-5">{product.title}</h1>
       <img src={product.image} alt={product.title} />
-      <p>Price: {product.price}$</p>
-      <p>{product.description}</p>
-      <button onClick={() => addToCart(product)}>Add to Cart</button>
-      <Footer />
+      <p className="text-light mt-3">Price: {product.price}$</p>
+      <p className="text-light mt-3">{product.description}</p>
+      <button
+        className="mt-3 mb-3 btn btn-secondary"
+        onClick={() => addToCart(product)}
+      >
+        Add to Cart
+      </button>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

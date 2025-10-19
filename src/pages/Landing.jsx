@@ -3,6 +3,7 @@ import { fetchData } from "../functions/fetch";
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import "../styles/Landing.css";
 
 function Landing() {
   const { isPending, isError, data, error } = useQuery({
@@ -20,15 +21,12 @@ function Landing() {
     <>
       <Header />
       <div className="hero-image">
-        {/* ovdje se dodaje background slika*/}
-        <h1>E5TOR3</h1>
-        <h4>Founded in 2025.</h4>
+        <h1 className="text-light">E5TOR3</h1>
+        <h4 className="text-light">Founded in 2025.</h4>
       </div>
-      {data.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
