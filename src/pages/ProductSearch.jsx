@@ -3,6 +3,10 @@ import { fetchData } from "../functions/fetch";
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
 import { useState } from "react";
+import { Suspense } from "react";
+import React from "react";
+
+const LazyProductCard = React.lazy(() => import("../components/ProductCard"));
 
 function ProductSearch() {
   const [category, setCategory] = useState("All");
@@ -50,7 +54,9 @@ function ProductSearch() {
                   key={product.id}
                   className="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch"
                 >
-                  <ProductCard product={product} />
+                  <Suspense fallback={<div>Loading ...</div>}>
+                    <LazyProductCard product={product} />
+                  </Suspense>
                 </div>
               ))
             : data
